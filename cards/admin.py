@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Category, Item, ItemImages
+from .models import Category, Item, ItemImages, ItemParameters
 from modeltranslation.admin import TabbedTranslationAdmin
 from adminsortable2.admin import SortableAdminMixin
 
@@ -19,3 +19,8 @@ class ItemAdmin(admin.ModelAdmin, SortableAdminMixin):
 @admin.register(ItemImages)
 class ItemImagesAdmin(admin.ModelAdmin, SortableAdminMixin):
     pass
+
+@admin.register(ItemParameters)
+class ItemParametersAdmin(SortableAdminMixin, admin.ModelAdmin):
+    search_fields = ('item__title', 'model')
+
